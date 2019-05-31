@@ -11,9 +11,12 @@ replay_pid*
 hs_err_pid*
 sjdkay_Job.txt
 AugerID.tmp
+Batch_Template_Lark.csh
+heinricn_Job.txt
 
 # Directories
 REPORT_OUTPUT
 HISTOGRAMS
 ROOTfiles
 OUTPUT
+batch
