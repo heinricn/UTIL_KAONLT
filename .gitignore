@@ -7,16 +7,22 @@
 *.png
 *.pdf
 *.nfs*
+batch/inputRun_Templates/ProductionLH2_ALL_Supl
 replay_pid*
 hs_err_pid*
+batch/augerID.tmp
+batch/tmp
+batch/sjdkay_Job.txt
+*.tmp
+batch/tmp*
 sjdkay_Job.txt
+*_Job.txt
 AugerID.tmp
-Batch_Template_Lark.csh
-heinricn_Job.txt
+tmp
 
 # Directories
 REPORT_OUTPUT
 HISTOGRAMS
 ROOTfiles
 OUTPUT
-batch
+batch/tmp

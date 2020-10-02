@@ -1,4 +1,4 @@
-#!/bin/bash                                                                                                                                                                                                      
+#! /bin/bash                                                                                                                                                                                                      
 
 ##### A batch submission script by Richard, insert the required script you want to batch run on line 53                                                                                 
 ##### Modify required resources as needed! See comments, leave CPU as 1!                                                                      
@@ -13,6 +13,8 @@ batch="${USER}_Job.txt"
 
 ##Input run numbers##                                                                      
 ##Point this to the location of your input run list, see templates folder for examples ##                                                                                                                       
+# inputFile="/u/group/c-kaonlt/USERS/${USER}/hallc_replay_lt/UTIL_BATCH/InputRunLists/Kaon_Data/HeepCoin_ALL"
+
 inputFile="/u/group/c-kaonlt/USERS/${USER}/hallc_replay_lt/UTIL_KAONLT/batch/inputRuns"
 
 ## Tape stub                                                                                                                                                                                                      
@@ -44,8 +46,8 @@ while true; do
                 cp /dev/null ${batch}
                 ##Creation of batch script for submission##                                                                                                                                                       
                 echo "PROJECT: c-kaonlt" >> ${batch}
-                echo "TRACK: analysis" >> ${batch} ## Use this track for production running
-                # echo "TRACK: debug" >> ${batch} ### Use this track for testing, higher priority
+                # echo "TRACK: analysis" >> ${batch} ## Use this track for production running
+                echo "TRACK: debug" >> ${batch} ### Use this track for testing, higher priority
                 echo "JOBNAME: KaonLT_${runNum}" >> ${batch} ## Change to be more specific if you want
                 # Read the tape stub and check the .dat file size. Request disk space dependening upon this. For trunctuated replays edit the + 25 GB buffer down as needed
 		# Note, unless this is set typically replays will produce broken root files
@@ -54,7 +56,7 @@ while true; do
                 echo "OS: centos77" >> ${batch}
                 echo "CPU: 1" >> ${batch} ### hcana is single core, setting CPU higher will lower priority and gain you nothing!
 		echo "INPUT_FILES: ${tape_file}" >> ${batch}
-                echo "COMMAND:/u/group/c-kaonlt/USERS/${USER}/hallc_replay_lt/UTIL_KAONLT/Batch_Template.sh ${runNum}" >> ${batch} ### Insert your script at end!                                            
+                echo "COMMAND:/u/group/c-kaonlt/USERS/${USER}/hallc_replay_lt/UTIL_KAONLT/pid_eff.sh ${runNum}" >> ${batch} ### Insert your script at end!                                            
                 echo "MAIL: ${USER}@jlab.org" >> ${batch} ## Consider commenting out for large runs unless you enjoy 1k email spam
                 echo "Submitting batch"
                 eval "jsub ${batch} 2>/dev/null"
