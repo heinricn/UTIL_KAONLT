@@ -1,0 +1,10 @@
+The recent update folds in some improvements to the kaonlt.py script from Richard, it also adds a "misc" cuts and param file.
+
+To keep scripts working that are NOT included here, modify the following lines where appropriate -
+
+(Before you specify the readDict)
+c = klt.pyPlot(None) --> c = klt.pyPlot(REPLAYPATH)
+(Inside the definition of make_cutDict)
+c = klt.pyPlot(readDict) -> c = klt.pyPlot(REPLAYPATH,readDict)
+(After you specify your cuts)
+c = klt.pyPlot(cutDict) -> c = klt.pyPlot(REPLAYPATH,cutDict)

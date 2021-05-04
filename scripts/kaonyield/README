@@ -72,8 +72,8 @@ This is telling you your branches in the tree you're trying to make and the numb
 This type of error will look something like the following -
 
 Traceback (most recent call last):
-  File "/group/c-kaonlt/USERS/sjdkay/hallc_replay_lt/UTIL_KAONLT/scripts/kaonyield/src/Kaonyield.py", line 427, in <module>
-  File "/group/c-kaonlt/USERS/sjdkay/hallc_replay_lt/UTIL_KAONLT/scripts/kaonyield/src/Kaonyield.py", line 424, in main
+  File "/group/c-pionlt/USERS/sjdkay/hallc_replay_lt/UTIL_KAONLT/scripts/kaonyield/src/Kaonyield.py", line 427, in <module>
+  File "/group/c-pionlt/USERS/sjdkay/hallc_replay_lt/UTIL_KAONLT/scripts/kaonyield/src/Kaonyield.py", line 424, in main
     
   File "/apps/python/3.4.3/lib/python3.4/site-packages/pandas/core/frame.py", line 369, in __init__
     arrays, columns = _to_arrays(data, columns, dtype=dtype)

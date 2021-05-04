@@ -18,19 +18,19 @@ fi
 
 # Set path depending upon hostname. Change or add more as needed  
 if [[ "${HOSTNAME}" = *"farm"* ]]; then  
-    REPLAYPATH="/group/c-kaonlt/USERS/${USER}/hallc_replay_lt"
+    REPLAYPATH="/group/c-pionlt/USERS/${USER}/hallc_replay_lt"
     if [[ "${HOSTNAME}" != *"ifarm"* ]]; then
 	source /site/12gev_phys/softenv.sh 2.1
     fi
-    cd "/group/c-kaonlt/hcana/"
-    source "/group/c-kaonlt/hcana/setup.sh"
+    cd "/group/c-pionlt/hcana/"
+    source "/group/c-pionlt/hcana/setup.sh"
     cd "$REPLAYPATH"
     source "$REPLAYPATH/setup.sh"
 elif [[ "${HOSTNAME}" = *"qcd"* ]]; then
-    REPLAYPATH="/group/c-kaonlt/USERS/${USER}/hallc_replay_lt"
+    REPLAYPATH="/group/c-pionlt/USERS/${USER}/hallc_replay_lt"
     source /site/12gev_phys/softenv.sh 2.1
-    cd "/group/c-kaonlt/hcana/"
-    source "/group/c-kaonlt/hcana/setup.sh" 
+    cd "/group/c-pionlt/hcana/"
+    source "/group/c-pionlt/hcana/setup.sh" 
     cd "$REPLAYPATH"
     source "$REPLAYPATH/setup.sh" 
 elif [[ "${HOSTNAME}" = *"cdaq"* ]]; then
@@ -45,7 +45,7 @@ source /apps/root/6.18.04/setroot_CUE.bash
 cd ${REPLAYPATH}/UTIL_KAONLT/scripts/pid/src/
 python3 pid_eff.py ${RUNNUMBER} ${MAXEVENTS}
 
-cd ${REPLAYPATH}/UTIL_KAONLT/scripts/pid/OUTPUTS/
+cd ${REPLAYPATH}/UTIL_KAONLT/OUTPUT/Analysis/PID
 convert noID_hms_cer_${RUNNUMBER}.png PID_hms_cer_${RUNNUMBER}.png noID_hms_cal_${RUNNUMBER}.png PID_hms_cal_${RUNNUMBER}.png noID_shms_hgcer_${RUNNUMBER}.png PID_shms_hgcer_${RUNNUMBER}.png noID_shms_aero_${RUNNUMBER}.png PID_shms_aero_${RUNNUMBER}.png noID_shms_cal_${RUNNUMBER}.png PID_shms_cal_${RUNNUMBER}.png pid_plots_${RUNNUMBER}.pdf
 rm -rf *.png
 

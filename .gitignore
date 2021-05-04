@@ -23,6 +23,6 @@ tmp
 # Directories
 REPORT_OUTPUT
 HISTOGRAMS
-ROOTfiles
+ROOTfiles*
 OUTPUT
 batch/tmp

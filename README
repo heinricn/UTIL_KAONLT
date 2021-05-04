@@ -1,6 +1,5 @@
 I have changed the structure and deleted many files for the offline_2020 analysis. If you wish to use previous version of UTIL_KAONLT, please see previous branches.
 
-
 ####################################################################
 scripts/        : contains all analysis scripts
 batch/          : for running batch jobs to farm

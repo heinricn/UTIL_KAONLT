@@ -25,7 +25,7 @@ void replay_production_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   pathList.push_back("./raw_volatile");
 
   //const char* RunFileNamePattern = "raw/coin_all_%05d.dat";
-  const char* ROOTFileNamePattern = "UTIL_KAONLT/ROOTfilesKaon/Kaon_coin_replay_production_%d_%d.root";
+  const char* ROOTFileNamePattern = "UTIL_KAONLT/ROOTfiles/Analysis/KaonLT/Kaon_coin_replay_production_%d_%d.root";
   
   // Load global parameters
   gHcParms->Define("gen_run_number", "Run Number", RunNumber);
@@ -191,19 +191,23 @@ void replay_production_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   coin->AddEvtType(2);
   TRG->AddDetector(coin); 
 
-  THcHelicityScaler *helscaler = new THcHelicityScaler("HS", "Hall C helicity scalers"); 
-  helscaler->SetROC(8);
-  helscaler->SetUseFirstEvent(kTRUE);
-  gHaEvtHandlers->Add(helscaler);
-  // Add helicity detector to trigger apparatus
-  THcHelicity* helicity = new THcHelicity("helicity","Helicity Detector");
-  TRG->AddDetector(helicity);
-  helicity->SetHelicityScaler(helscaler);
+  // THcHelicityScaler *helscaler = new THcHelicityScaler("HS", "Hall C helicity scalers"); 
+  // helscaler->SetROC(8);
+  // helscaler->SetUseFirstEvent(kTRUE);
+  // gHaEvtHandlers->Add(helscaler);
+  // // Add helicity detector to trigger apparatus
+  // THcHelicity* helicity = new THcHelicity("helicity","Helicity Detector");
+  // TRG->AddDetector(helicity);
+  // helicity->SetHelicityScaler(helscaler);
   
   //Add coin physics module THcCoinTime::THcCoinTime (const char *name, const char* description, const char* hadArmName, 
   // const char* elecArmName, const char* coinname) :
   THcCoinTime* coinTime = new THcCoinTime("CTime", "Coincidende Time Determination", "P", "H", "T.coin");
   gHaPhysics->Add(coinTime);
+  //Add RF physics module THcRFTime::THcRFTime (const char *name, const char* description, const char* hadArmName, 
+  // const char* elecArmName, const char* RFname) :
+  THcRFTime* RFTime = new THcRFTime("RFTime", "RF Time Determination", "P", "H", "T.coin");
+  gHaPhysics->Add(RFTime);
 
   // Add event handler for prestart event 125.
   THcConfigEvtHandler* ev125 = new THcConfigEvtHandler("HC", "Config Event type 125");
@@ -255,9 +259,9 @@ void replay_production_coin (Int_t RunNumber = 0, Int_t MaxEvent = 0) {
   // Define cuts file
   analyzer->SetCutFile("UTIL_KAONLT/config/DEF-files/coin_production_cuts.def");  // optional
   // File to record accounting information for cuts
-  analyzer->SetSummaryFile(Form("UTIL_KAONLT/config/REPORT_OUTPUT/summary_production_%d_%d.report", RunNumber, MaxEvent)); // optional
+  //analyzer->SetSummaryFile(Form("UTIL_KAONLT/config/REPORT_OUTPUT/summary_production_%d_%d.report", RunNumber, MaxEvent)); // optional
   // Start the actual analysis.
   analyzer->Process(run);
   // Create report file from template	       
-  analyzer->PrintReport("UTIL_KAONLT/config/TEMPLATES/COIN/coin_production.template", Form("UTIL_KAONLT/REPORT_OUTPUT/Kaon_replay_coin_production_%d_%d.report", RunNumber, MaxEvent)); // optional}
+  analyzer->PrintReport("UTIL_KAONLT/config/TEMPLATES/COIN/coin_production.template", Form("UTIL_KAONLT/REPORT_OUTPUT/Analysis/KaonLT/Kaon_replay_coin_production_%d_%d.report", RunNumber, MaxEvent)); // optional}
 }

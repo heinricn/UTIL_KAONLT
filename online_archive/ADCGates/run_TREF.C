@@ -23,7 +23,7 @@ void run_TREF(Int_t RunNumber = 0, Int_t MaxEvent = 0)
 
   //Begin Checking ADC Gates
   TChain ch("T");
-  ch.Add(Form("/u/group/c-kaonlt/hallc_replay_kaonlt/ROOTfiles/shms_coin_replay_production_all_%i_%i.root",RunNumber,MaxEvent));
+  ch.Add(Form("/u/group/c-pionlt/hallc_replay_kaonlt/ROOTfiles/shms_coin_replay_production_all_%i_%i.root",RunNumber,MaxEvent));
   TString option = Form("%i",RunNumber);
 
   TProof *proof = TProof::Open("workers=4");
